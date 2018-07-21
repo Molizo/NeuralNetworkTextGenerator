@@ -10,6 +10,7 @@ namespace MessingAround
         {
             //read example text
             string exampleTxt = File.ReadAllText("example.txt");
+            File.Create("output.txt");
 
             //encode in one-hot encoding, each letter is assigned a unique neuron.
             List<char> dict = null;
@@ -88,6 +89,10 @@ namespace MessingAround
                     //output iterations, loss and generated text
                     System.Console.WriteLine("Iterations: " + trainer.GetIterations() + ", Loss: " + trainer.GetLoss() + System.Environment.NewLine +
                                              "Text: " + txt + System.Environment.NewLine);
+                    string outputOld = File.ReadAllText("output.txt");
+                    string output = outputOld + System.Environment.NewLine + "Iterations: " + trainer.GetIterations() + ", Loss: " + trainer.GetLoss() + System.Environment.NewLine +
+                                             "Text: " + txt + System.Environment.NewLine;
+                    File.WriteAllText("output.txt", output);
 
                     lastTime = nowTime;
                 }
