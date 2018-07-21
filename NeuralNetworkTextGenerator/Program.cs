@@ -6,7 +6,7 @@ namespace MessingAround
 {
     internal class TextGenerator
     {
-        public /*static*/ void Main(string[] args)
+        public static void Main(string[] args)
         {
             //read example text
             string exampleTxt = File.ReadAllText("example.txt");
